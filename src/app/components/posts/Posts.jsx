@@ -22,7 +22,7 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn }) {
   const { searchQuery } = useUser();
 
   useEffect(() => {
-    if (posts) {
+    if (posts && queryKey[0] == "posts") {
       setIsOptimizing(true);
 
       const reduced = posts.reduce(
@@ -58,14 +58,14 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn }) {
       setPostsOptimize(displayPosts);
       setIsOptimizing(false);
     }
-  }, [isOrderByNewest, flags, searchQuery, posts]);
+  }, [isOrderByNewest, flags, searchQuery, posts, queryKey]);
 
   if (isError) {
     return <Error error={error} />;
   }
 
   // For Home page
-  if (!isOrderByNewest && posts) {
+  if (posts && queryKey[0] == "myPosts") {
     return posts.map((post) => (
       <Link
         key={post.post_id}
