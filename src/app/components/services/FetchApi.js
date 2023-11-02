@@ -1,4 +1,4 @@
-import supabase from "@/app/supabase";
+import supabase from "../../../../netlify-functions/supabase";
 
 export async function fetchPosts() {
   let { data: posts, error } = await supabase.from("posts").select("*");
