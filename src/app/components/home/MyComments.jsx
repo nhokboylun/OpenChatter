@@ -10,7 +10,6 @@ function MyComments({ queryKey, queryFn }) {
     queryKey,
     queryFn,
   });
-  console.log(comments);
 
   return (
     <>

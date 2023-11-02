@@ -12,15 +12,19 @@ function MyPost() {
     <div className="w-[90%] my-10 mx-auto flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         <div className="text-4xl font-bold">My Posts</div>
-        <Posts queryKey={["myPosts"]} queryFn={() => fetchMyPosts(userId)} />
+        {userId && (
+          <Posts queryKey={["myPosts"]} queryFn={() => fetchMyPosts(userId)} />
+        )}
       </div>
 
       <div className="flex flex-col gap-4 mt-16">
         <div className="text-4xl font-bold">My Comments</div>
-        <MyComments
-          queryKey={["myComments"]}
-          queryFn={() => fetchMyComments(userId)}
-        />
+        {userId && (
+          <MyComments
+            queryKey={["myComments"]}
+            queryFn={() => fetchMyComments(userId)}
+          />
+        )}
       </div>
     </div>
   );
