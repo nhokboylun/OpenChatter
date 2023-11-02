@@ -1,31 +1,41 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import { checkId, createUser } from "../services/FetchApi";
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [userId, setUserId] = useState(localStorage.getItem("id"));
+  const [userId, setUserId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    async function generateUniqueId() {
-      while (!userId) {
-        let tempId = generateRandom6DigitID();
-        const user = await checkId(tempId);
-        if (user.length === 0) {
-          setUserId(tempId);
-          createUser(tempId);
-          localStorage.setItem("id", tempId);
-          break; // Exit loop when a unique ID is found
-        }
-      }
+  const generateUniqueId = useCallback(async () => {
+    let tempId = generateRandom6DigitID();
+    const user = await checkId(tempId);
+    if (user.length === 0) {
+      setUserId(tempId);
+      createUser(tempId);
+      localStorage.setItem("id", tempId);
+    } else {
+      generateUniqueId(); // Call the function recursively until a unique ID is found
     }
-    if (userId === null) {
+  }, []); // Dependencies array is empty which means this function is created once per component lifecycle
+
+  useEffect(() => {
+    // This will only be executed on the client-side
+    const localId = localStorage.getItem("id");
+    if (localId) {
+      setUserId(localId);
+    } else {
       generateUniqueId();
     }
-  }, [userId]);
+  }, [generateUniqueId]);
 
   return (
     <UserContext.Provider value={{ userId, searchQuery, setSearchQuery }}>
