@@ -85,7 +85,9 @@ function PostForm({
         </label>
       </div>
 
-      <Button type="md">{postId ? "Edit Post" : "Create Post"}</Button>
+      <Button type="md" className="font-semibold text-2xl">
+        {postId ? "Edit Post" : "Create Post"}
+      </Button>
     </form>
   );
 }

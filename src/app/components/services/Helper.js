@@ -92,3 +92,27 @@ export function getFileExtension(url) {
   }
   return null;
 }
+
+export async function takeScreenshot(urlToCapture) {
+  const accessKey = "35069c738ee84ec285790a2e2c83bcfd";
+  const format = "png";
+  const delay = "1";
+  const responseType = "json";
+
+  const apiUrl = `https://api.apiflash.com/v1/urltoimage?access_key=${accessKey}&url=${urlToCapture}&format=${format}&delay=${delay}&response_type=${responseType}`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error taking screenshot:", error);
+  }
+}

@@ -234,3 +234,35 @@ export async function fetchMyComments(id) {
 
   return posts;
 }
+
+export async function sharePost(data) {
+  const {
+    title,
+    content,
+    secretKey,
+    postId: postIdSharedFrom,
+    userId,
+    flags,
+    url,
+  } = data;
+  console.log(data);
+  const { error } = await supabase.from("posts").insert([
+    {
+      title,
+      content,
+      secret_key: secretKey,
+      share_from_post_id: postIdSharedFrom,
+      user_id: userId,
+      type: flags,
+      url,
+      image_name: "",
+    },
+  ]);
+
+  if (error) {
+    console.error("Error on sharing post:", error);
+    throw error;
+  }
+
+  return null;
+}

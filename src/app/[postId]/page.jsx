@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Loader from "../components/UI/Loader";
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +13,7 @@ import { getFileExtension } from "../components/services/Helper";
 import { ShareIcon } from "@heroicons/react/24/outline";
 import Button from "../components/UI/Button";
 import ConfirmModal from "../components/UI/ConfirmModal";
+import Link from "next/link";
 
 function PostDetail({ params }) {
   const {
@@ -85,7 +87,10 @@ function PostDetail({ params }) {
       </Button>
 
       {showConfirmModal && (
-        <ConfirmModal setShowConfirmModal={setShowConfirmModal} />
+        <ConfirmModal
+          setShowConfirmModal={setShowConfirmModal}
+          postId={params.postId}
+        />
       )}
 
       <PostInfo post={posts.post} />
@@ -97,8 +102,20 @@ function PostDetail({ params }) {
             Your browser does not support the video tag.
           </video>
         ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={url} alt={posts.post.title} className="w-full h-auto" />
+          <>
+            {url.includes("https://api.apiflash.com/") ? (
+              <Link href={`/${posts.post.share_from_post_id}`}>
+                {" "}
+                <img
+                  src={url}
+                  alt={posts.post.title}
+                  className="w-full h-auto"
+                />
+              </Link>
+            ) : (
+              <img src={url} alt={posts.post.title} className="w-full h-auto" />
+            )}
+          </>
         ))}
 
       <PostManipulation

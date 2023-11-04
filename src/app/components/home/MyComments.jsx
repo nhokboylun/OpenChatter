@@ -17,7 +17,7 @@ function MyComments({ queryKey, queryFn }) {
         <Link
           href={`/${comment.post_id}`}
           key={comment.comment_id}
-          className="flex px-4 py-6 gap-2 bg-white hover:bg-slate-400 duration-300 transition rounded-lg shadow-md items-center"
+          className="flex px-4 py-6 gap-2 bg-white hover:bg-gray-200 duration-300 transition rounded-lg shadow-md items-center"
         >
           <Image
             className="rounded-full"

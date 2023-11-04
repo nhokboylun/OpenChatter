@@ -5,6 +5,7 @@ import Error from "../UI/Error";
 import React, { useEffect, useState } from "react";
 import PostInfo from "./PostInfo";
 import { useUser } from "../contexts/userContext";
+import { LinkIcon } from "@heroicons/react/24/outline";
 
 function Posts({ isOrderByNewest, flags, queryKey, queryFn }) {
   const {
@@ -64,40 +65,35 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn }) {
     return <Error error={error} />;
   }
 
-  // For Home page
-  if (posts && queryKey[0] == "myPosts") {
-    return posts.map((post) => (
+  if (isOptimizing || isLoading) return <Loader />;
+
+  function renderPosts(postList) {
+    return postList.map((post) => (
       <Link
         key={post.post_id}
-        className="bg-white shadow-md px-4 py-6 flex flex-col gap-3"
-        href={"/" + post.post_id}
+        className={`${
+          post.share_from_post_id
+            ? "bg-blue-100 hover:bg-blue-200"
+            : "bg-white hover:bg-gray-200"
+        } duration-300 transform shadow-md px-4 py-6 flex flex-col gap-3 relative rounded-sm`}
+        href={`/${post.post_id}`}
       >
+        {post.share_from_post_id && (
+          <LinkIcon className="w-6 h-6 absolute top-2 right-4" />
+        )}
+
         <PostInfo post={post} />
+
         <p className="text-md text-gray-400 font-semibold">
-          {post.upvote}
-          {post.upvote > 1 ? ` upvotes` : ` upvote`}
+          {post.upvote} {post.upvote > 1 ? `upvotes` : `upvote`}
         </p>
       </Link>
     ));
   }
 
-  // For forum page
   return (
     <div className="w-full flex flex-col gap-4">
-      {(isOptimizing || isLoading) && <Loader />}
-      {postsOptimize.map((post) => (
-        <Link
-          key={post.post_id}
-          className="bg-white shadow-md px-4 py-6 flex flex-col gap-3"
-          href={"/" + post.post_id}
-        >
-          <PostInfo post={post} />
-          <p className="text-md text-gray-400 font-semibold">
-            {post.upvote}
-            {post.upvote > 1 ? ` upvotes` : ` upvote`}
-          </p>
-        </Link>
-      ))}
+      {renderPosts(queryKey[0] === "myPosts" ? posts : postsOptimize)}
     </div>
   );
 }
