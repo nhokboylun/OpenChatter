@@ -1,68 +1,18 @@
-"use client";
-import { useRef, useState } from "react";
-import { createPost } from "../components/services/FetchApi";
-import { useUser } from "../components/contexts/userContext";
-import PostForm from "../components/posts/PostForm";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import Loader from "../components/UI/Loader";
+import CreatePost from "./CreatePost";
 
-function CreatePost() {
-  const { userId } = useUser();
-  const [hasImageFile, setHasImageFile] = useState(false);
-  const imageInputRef = useRef(null);
-  const [isCreating, setIsCreating] = useState(false);
+export const metadata = {
+  title: "Create Post",
+  description:
+    "Create a new post on OpenChatter and share your thoughts with the community.",
+  robots: "noindex, nofollow",
+};
 
-  const router = useRouter();
-
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
-
-    if (file) {
-      const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
-      if (validImageTypes.includes(file.type)) {
-        setHasImageFile(true);
-      } else {
-        alert("Invalid image type. Please select a GIF, JPEG, or PNG file.");
-        event.target.value = null;
-        setHasImageFile(false);
-      }
-    } else {
-      setHasImageFile(false);
-    }
-  }
-
-  async function onSubmit(data) {
-    if (imageInputRef.current && imageInputRef.current.files[0]) {
-      const uploadedFile = imageInputRef.current.files[0];
-
-      data.imageFile = uploadedFile;
-    }
-
-    try {
-      setIsCreating(true);
-      await createPost({ ...data, userId });
-      toast.success("Successfully Create Post");
-      router.push("/");
-    } catch (err) {
-      toast.error(err.message);
-    } finally {
-      setIsCreating(false);
-    }
-  }
-
+function Layout() {
   return (
-    <div className="w-[600px] text-xl mx-auto my-10 bg-white shadow-2xl border rounded-md">
-      {isCreating && <Loader />}
-      <PostForm
-        defaultValues={{ flags: "question" }}
-        onSubmit={onSubmit}
-        handleImageUpload={handleImageUpload}
-        hasImageFile={hasImageFile}
-        imageInputRef={imageInputRef}
-      />
-    </div>
+    <>
+      <CreatePost />
+    </>
   );
 }
 
-export default CreatePost;
+export default Layout;

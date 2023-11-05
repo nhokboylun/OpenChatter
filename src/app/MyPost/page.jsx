@@ -1,33 +1,17 @@
-"use client";
+import MyPost from "./MyPost";
 
-import Posts from "../components/posts/Posts";
-import { useUser } from "../components/contexts/userContext";
-import { fetchMyComments, fetchMyPosts } from "../components/services/FetchApi";
-import MyComments from "../components/home/MyComments";
+export const metadata = {
+  title: "My Post",
+  description: "View and manage your posts and comments on openchatter.",
+  robots: "noindex, nofollow",
+};
 
-function MyPost() {
-  const { userId } = useUser();
-
+function Layout() {
   return (
-    <div className="w-[90%] my-10 mx-auto flex flex-col gap-4">
-      <div className="flex flex-col gap-4">
-        <div className="text-4xl font-bold">My Posts</div>
-        {userId && (
-          <Posts queryKey={["myPosts"]} queryFn={() => fetchMyPosts(userId)} />
-        )}
-      </div>
-
-      <div className="flex flex-col gap-4 mt-16">
-        <div className="text-4xl font-bold">My Comments</div>
-        {userId && (
-          <MyComments
-            queryKey={["myComments"]}
-            queryFn={() => fetchMyComments(userId)}
-          />
-        )}
-      </div>
-    </div>
+    <>
+      <MyPost />
+    </>
   );
 }
 
-export default MyPost;
+export default Layout;
