@@ -1,2 +1,7 @@
 [build]
   functions = "netlify-functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"

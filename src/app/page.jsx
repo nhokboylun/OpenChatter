@@ -12,7 +12,6 @@ export const metadata = {
 
 async function Page() {
   const data = await fetchPosts();
-  console.log(data);
 
   return <Homepage initialData={data} />;
 }
