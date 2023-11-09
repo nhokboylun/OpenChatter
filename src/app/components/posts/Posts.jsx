@@ -16,7 +16,7 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn, initialData }) {
   } = useQuery({
     queryKey,
     queryFn,
-    initialData,
+    initialData: initialData,
   });
   const [postsOptimize, setPostsOptimize] = useState([]);
   const [isOptimizing, setIsOptimizing] = useState(false);

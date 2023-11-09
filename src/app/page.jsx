@@ -1,5 +1,4 @@
 import Homepage from "./Hompage";
-import { useUser } from "./components/contexts/userContext";
 import { fetchPosts } from "./components/services/FetchApi";
 
 export const metadata = {
@@ -13,6 +12,7 @@ export const metadata = {
 
 async function Page() {
   const data = await fetchPosts();
+  console.log(data);
 
   return <Homepage initialData={data} />;
 }
