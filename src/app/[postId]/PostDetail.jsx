@@ -15,7 +15,7 @@ import Button from "../components/UI/Button";
 import ConfirmModal from "../components/UI/ConfirmModal";
 import Link from "next/link";
 
-function PostDetail({ params }) {
+function PostDetail({ params, initialData }) {
   const {
     data: posts,
     isLoading,
@@ -27,6 +27,7 @@ function PostDetail({ params }) {
       const [, postId] = queryKey;
       return fetchPostById(postId);
     },
+    initialData,
   });
 
   const [showModal, setShowModal] = useState(false);
