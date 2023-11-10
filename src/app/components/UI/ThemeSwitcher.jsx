@@ -6,24 +6,22 @@ import { useEffect, useState } from "react";
 
 function ThemeSwitcher({ responsive }) {
   const { theme, setTheme } = useTheme();
-  const [enabled, setEnabled] = useState(theme === "light");
+  const [enabled, setEnabled] = useState();
 
   useEffect(() => {
-    setEnabled(theme === "dark");
-  }, [theme]);
+    theme === "system"
+      ? setTheme("light") && setEnabled(false)
+      : setEnabled(theme === "dark");
+  }, [setTheme, theme]);
 
   function toggleTheme() {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    setTheme(theme === "light" ? "dark" : "light");
   }
 
   return (
     <div
       className={`rounded-full relative ${responsive} ${
-        enabled === true ? "bg-blue-900" : "bg-yellow-200"
+        enabled ? "bg-blue-900" : "bg-yellow-200"
       }`}
     >
       <div
@@ -35,12 +33,12 @@ function ThemeSwitcher({ responsive }) {
       <Button className="rounded-full flex z-10 gap-4" onClick={toggleTheme}>
         <SunIcon
           className={`rounded-full md:w-6 md:h-6 w-4 h-4 z-10 ${
-            enabled === false ? "opacity-100 text-yellow-400" : "opacity-0"
+            !enabled ? "opacity-100 text-yellow-400" : "opacity-0"
           }`}
         />
         <MoonIcon
           className={`rounded-full md:w-6 md:h-6 w-4 h-4 z-10 ${
-            enabled === true ? "opacity-100 text-black" : "opacity-0"
+            enabled ? "opacity-100 text-black" : "opacity-0"
           }`}
         />
       </Button>
