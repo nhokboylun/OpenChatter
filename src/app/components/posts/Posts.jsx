@@ -7,7 +7,7 @@ import PostInfo from "./PostInfo";
 import { useUser } from "../contexts/userContext";
 import { LinkIcon } from "@heroicons/react/24/outline";
 
-function Posts({ isOrderByNewest, flags, queryKey, queryFn, initialData }) {
+function Posts({ isOrderByNewest, flags, queryKey, queryFn }) {
   const {
     data: posts,
     isLoading,
@@ -16,7 +16,6 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn, initialData }) {
   } = useQuery({
     queryKey,
     queryFn,
-    initialData: initialData,
   });
   const [postsOptimize, setPostsOptimize] = useState([]);
   const [isOptimizing, setIsOptimizing] = useState(false);

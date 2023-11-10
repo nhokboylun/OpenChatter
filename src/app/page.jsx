@@ -1,5 +1,4 @@
 import Homepage from "./Hompage";
-import { fetchPosts } from "./components/services/FetchApi";
 
 export const metadata = {
   title: "OpenChatter",
@@ -11,9 +10,7 @@ export const metadata = {
 };
 
 async function Page() {
-  const data = await fetchPosts();
-
-  return <Homepage initialData={data} />;
+  return <Homepage />;
 }
 
 export default Page;

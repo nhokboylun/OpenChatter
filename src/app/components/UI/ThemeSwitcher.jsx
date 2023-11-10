@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 function ThemeSwitcher({ responsive }) {
   const { theme, setTheme } = useTheme();
-  const [enabled, setEnabled] = useState();
+  const [enabled, setEnabled] = useState(theme === "dark");
 
   useEffect(() => {
     theme === "system"

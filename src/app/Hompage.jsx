@@ -4,7 +4,7 @@ import Button from "./components/UI/Button";
 import Posts from "./components/posts/Posts";
 import { fetchPosts } from "./components/services/FetchApi";
 
-function Homepage({ initialData }) {
+function Homepage() {
   const [isOrderByNewest, setIsOderByNewest] = useState(true);
   const [flags, setFlags] = useState("");
 
@@ -54,7 +54,6 @@ function Homepage({ initialData }) {
         flags={flags}
         queryKey={["posts"]}
         queryFn={fetchPosts}
-        initialData={initialData}
       />
     </div>
   );
