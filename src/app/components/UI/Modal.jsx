@@ -56,7 +56,7 @@ function Modal({ postId, secretKey, isDelete, setShowModal }) {
       onClick={handleCloseModal}
       className="fixed inset-0 z-50 flex items-center justify-center"
     >
-      <div className="bg-gray-200 rounded-lg p-6 shadow-lg relative">
+      <div className="bg-gray-200 rounded-lg p-6  dark:bg-gray-700 shadow-lg relative">
         <div className="absolute top-0 right-1">
           <Button
             className="hover:opacity-50"
@@ -101,7 +101,7 @@ function Modal({ postId, secretKey, isDelete, setShowModal }) {
 
           <Button
             onClick={handleConfirm}
-            className="sm bg-blue-500 hover:bg-blue-700 rounded font-semibold"
+            className="sm bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 rounded font-semibold"
           >
             {isManipulating ? <div className="loader"></div> : "Confirm"}
           </Button>

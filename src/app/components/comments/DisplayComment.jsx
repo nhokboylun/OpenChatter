@@ -90,7 +90,7 @@ function DisplayComment({ comment, index, lastIndex, userId, postId }) {
       />
 
       <div
-        className={`rounded-2xl relative text-xl px-2 py-1 bg-gray-200 ${
+        className={`rounded-2xl relative text-xl px-2 py-1 bg-gray-200 dark:bg-gray-500 ${
           isEditting == comment.comment_id && "w-full"
         }`}
       >
@@ -110,7 +110,7 @@ function DisplayComment({ comment, index, lastIndex, userId, postId }) {
           <p>{calcCommentAge(comment.created_at)}</p>
           <button
             onClick={() => handleLike(comment.comment_id, comment.upvote)}
-            className="cursor-pointer hover:text-blue-700 underline underline-offset-1"
+            className="cursor-pointer hover:text-blue-700 dark:hover:text-blue-500 underline underline-offset-1"
           >
             Like
           </button>
@@ -128,7 +128,7 @@ function DisplayComment({ comment, index, lastIndex, userId, postId }) {
         >
           <EllipsisVerticalIcon className="w-6 h-6" />
           {activeModalCommentId === comment.comment_id && (
-            <div className="flex flex-col absolute z-50 bg-white rounded-lg shadow-xl">
+            <div className="flex flex-col absolute z-50 bg-white dark:bg-gray-900 dark:text-white rounded-lg shadow-xl">
               <button
                 onClick={() => setIsEditting(activeModalCommentId)}
                 className="hover:bg-blue-400 transition duration-300 p-2 rounded-lg"

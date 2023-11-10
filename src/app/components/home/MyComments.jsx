@@ -17,7 +17,7 @@ function MyComments({ queryKey, queryFn }) {
         <Link
           href={`/${comment.post_id}`}
           key={comment.comment_id}
-          className="flex px-4 py-6 gap-2 bg-white hover:bg-gray-200 duration-300 transition rounded-lg shadow-md items-center"
+          className="flex px-4 py-6 gap-2 bg-white dark:bg-gray-700 dark:hover:bg-gray-600 hover:bg-gray-200 duration-300 transition rounded-lg shadow-md items-center"
         >
           <Image
             className="rounded-full"
@@ -27,7 +27,7 @@ function MyComments({ queryKey, queryFn }) {
             alt="anonymous"
           />
 
-          <p className="rounded-2xl relative text-xl px-2 py-1 bg-gray-200">
+          <p className="rounded-2xl relative text-xl px-2 py-1 bg-gray-200 dark:bg-gray-500">
             {comment.content}
           </p>
 

@@ -1,7 +1,7 @@
 import { calcPostAge, displayShortContent } from "../services/Helper";
 
 function PostInfo({ post }) {
-  const style = "text-md text-gray-400 font-semibold";
+  const style = "dark:text-gray-400 text-md text-gray-400 font-semibold";
   return (
     <>
       <p className={style}>{calcPostAge(post.created_at)}</p>

@@ -4,6 +4,7 @@ import "./globals.css";
 import TanstackProvider from "./TanstackProvider";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/UI/Footer";
+import ThemeContext from "./components/contexts/themeContext";
 
 export const metadata = {
   title: { default: "OpenChatter", template: `%s | OpenChatter` },
@@ -19,12 +20,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="flex flex-col bg-gray-100 min-h-screen">
         <TanstackProvider>
-          <UserProvider>
-            <Toaster />
-            <NavBar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </UserProvider>
+          <ThemeContext>
+            <UserProvider>
+              <Toaster />
+              <NavBar />
+              <main className="flex-grow dark:bg-gray-900">{children}</main>
+              <Footer />
+            </UserProvider>
+          </ThemeContext>
         </TanstackProvider>
       </body>
     </html>

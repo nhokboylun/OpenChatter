@@ -10,18 +10,24 @@ function Homepage({ initialData }) {
 
   return (
     <div className="w-[90%] my-10 mx-auto flex flex-col gap-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 text-xs sm:text-lg justify-between items-center">
         <div className="flex gap-2 font-[500] items-center">
           <p>Order By:</p>
           <Button
-            className={`${isOrderByNewest && "bg-blue-400"}`}
+            className={`${
+              isOrderByNewest &&
+              "bg-blue-400 dark:bg-red-500 dark:hover:bg-red-400"
+            }`}
             onClick={() => setIsOderByNewest(true)}
             type="md"
           >
             Newest
           </Button>
           <Button
-            className={`${!isOrderByNewest && "bg-blue-400"}`}
+            className={`${
+              !isOrderByNewest &&
+              "bg-blue-400 dark:bg-red-500 dark:hover:bg-red-400"
+            }`}
             onClick={() => setIsOderByNewest(false)}
             type="md"
           >

@@ -2,7 +2,7 @@ function Button({ className, children, type, onClick }) {
   const base = `transition duration-300 p-2`;
   const styles = {
     sm: `bg-gray-300 hover:bg-gray-400 transition duration-300 gap-1 flex rounded-full justify-center`,
-    md: `bg-blue-300 rounded-lg hover:bg-blue-500`,
+    md: `bg-blue-300 dark:bg-blue-300 dark:font-bold dark:hover:bg-red-600 rounded-lg hover:bg-blue-500`,
   };
 
   return (

@@ -21,7 +21,7 @@ function UserProvider({ children }) {
     if (user.length === 0) {
       setUserId(tempId);
       createUser(tempId);
-      localStorage.setItem("id", tempId);
+      localStorage.setItem("OpenChatterId", tempId);
     } else {
       generateUniqueId(); // Call the function recursively until a unique ID is found
     }
@@ -29,7 +29,7 @@ function UserProvider({ children }) {
 
   useEffect(() => {
     // This will only be executed on the client-side
-    const localId = localStorage.getItem("id");
+    const localId = localStorage.getItem("OpenChatterId");
     if (localId) {
       setUserId(localId);
     } else {

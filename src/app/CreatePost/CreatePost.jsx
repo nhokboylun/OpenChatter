@@ -52,7 +52,7 @@ function CreatePost() {
   }
 
   return (
-    <div className="w-[600px] text-xl mx-auto my-10 bg-white shadow-2xl border rounded-md">
+    <>
       {isCreating && <Loader />}
       <PostForm
         defaultValues={{ flags: "question" }}
@@ -61,7 +61,7 @@ function CreatePost() {
         hasImageFile={hasImageFile}
         imageInputRef={imageInputRef}
       />
-    </div>
+    </>
   );
 }
 

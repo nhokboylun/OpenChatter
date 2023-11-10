@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-center bg-gray-800 px-6 py-4 text-white">
+    <footer className="flex flex-col items-center justify-center dark:bg-gray-700 bg-gray-800 px-6 py-4 text-white">
       <div className="mb-4 flex items-center gap-4">
         <span>
           <svg

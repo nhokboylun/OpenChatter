@@ -74,8 +74,8 @@ function Posts({ isOrderByNewest, flags, queryKey, queryFn, initialData }) {
         key={post.post_id}
         className={`${
           post.share_from_post_id
-            ? "bg-blue-100 hover:bg-blue-200"
-            : "bg-white hover:bg-gray-200"
+            ? "bg-blue-100 hover:bg-blue-200 dark:hover:bg-blue-900 dark:bg-blue-950"
+            : "bg-white hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 "
         } duration-300 transform shadow-md px-4 py-6 flex flex-col gap-3 relative rounded-sm`}
         href={`/${post.post_id}`}
       >

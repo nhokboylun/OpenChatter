@@ -45,17 +45,29 @@ function PostManipulation({
 
   return (
     <div className="flex justify-between">
-      <Button onClick={handleUpvote} type="sm" className="w-16 ml-2">
+      <Button
+        className="dark:bg-blue-900 dark:hover:bg-blue-800 w-16 ml-2"
+        onClick={handleUpvote}
+        type="sm"
+      >
         {vote}
         <HandThumbUpIcon className="w-6 h-6" />
       </Button>
 
       {isPostOwner && (
         <div className="flex gap-2">
-          <Button onClick={handleEdit} type="sm">
+          <Button
+            className="dark:bg-blue-900 dark:hover:bg-blue-800"
+            onClick={handleEdit}
+            type="sm"
+          >
             <PencilSquareIcon className="w-6 h-6" />
           </Button>
-          <Button onClick={handleDelete} type="sm">
+          <Button
+            className="dark:bg-blue-900 dark:hover:bg-blue-800"
+            onClick={handleDelete}
+            type="sm"
+          >
             <TrashIcon className="w-6 h-6" />
           </Button>
         </div>

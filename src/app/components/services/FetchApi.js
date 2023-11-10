@@ -190,7 +190,6 @@ export async function deletePost(postId) {
   const { error } = await supabase.from("posts").delete().eq("post_id", postId);
 
   if (error) {
-    console.log(error);
     throw error;
   }
 
@@ -245,7 +244,6 @@ export async function sharePost(data) {
     flags,
     url,
   } = data;
-  console.log(data);
   const { error } = await supabase.from("posts").insert([
     {
       title,

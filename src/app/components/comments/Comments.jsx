@@ -23,7 +23,7 @@ function Comments({ comments, postId }) {
   });
 
   return (
-    <div className="px-4 py-6 bg-gray-100 flex flex-col gap-8 rounded-xl">
+    <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 flex flex-col gap-8 rounded-xl">
       {comments.map((comment, index) => (
         <DisplayComment
           comment={comment}

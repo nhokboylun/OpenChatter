@@ -65,7 +65,7 @@ function PostDetail({ params, initialData }) {
   }
 
   return (
-    <div className="bg-white flex flex-col mt-8 w-[90%] gap-4 mx-auto px-4 py-6 relative">
+    <div className="bg-white dark:bg-gray-800 flex flex-col my-8 w-[90%] gap-4 mx-auto px-4 py-6 relative">
       {(showModal || showConfirmModal) && (
         <div className="fixed inset-0 z-40 backdrop-blur-sm bg-opacity-50"></div>
       )}
@@ -82,7 +82,7 @@ function PostDetail({ params, initialData }) {
       <Button
         onClick={() => setShowConfirmModal(true)}
         type="sm"
-        className="absolute top-4 right-5 "
+        className="absolute top-4 right-5 dark:bg-blue-900 dark:hover:bg-blue-800"
       >
         <ShareIcon className="w-6 h-6" />
       </Button>
@@ -110,11 +110,15 @@ function PostDetail({ params, initialData }) {
                 <img
                   src={url}
                   alt={posts.post.title}
-                  className="w-full h-auto"
+                  className="w-full h-auto border dark:border-gray-500 dark:border-[3px]"
                 />
               </Link>
             ) : (
-              <img src={url} alt={posts.post.title} className="w-full h-auto" />
+              <img
+                src={url}
+                alt={posts.post.title}
+                className="w-full h-auto border dark:border-gray-500 dark:border-[3px]"
+              />
             )}
           </>
         ))}

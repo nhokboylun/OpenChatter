@@ -78,7 +78,7 @@ function UpdatePost() {
   }
 
   return (
-    <div className="w-[600px] text-xl mx-auto my-10 bg-white shadow-2xl border rounded-md">
+    <>
       {isLoading && <Loader />}
       <PostForm
         defaultValues={{
@@ -94,7 +94,7 @@ function UpdatePost() {
         imageInputRef={imageInputRef}
         postId={postId}
       />
-    </div>
+    </>
   );
 }
 

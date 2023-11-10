@@ -46,7 +46,7 @@ function ConfirmModal({ setShowConfirmModal, postId }) {
       onClick={handleCloseModal}
       className="fixed inset-0 z-50 flex items-center justify-center"
     >
-      <div className="bg-gray-200 rounded-lg p-8 shadow-lg relative w-[400px]">
+      <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-8 shadow-lg relative w-[400px]">
         <div className="absolute top-2 right-3">
           <Button
             className="hover:opacity-50"
@@ -142,7 +142,7 @@ function ConfirmModal({ setShowConfirmModal, postId }) {
             ) : (
               <Button
                 type="submit"
-                className="sm bg-blue-500 hover:bg-blue-700 rounded font-semibold"
+                className="sm bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 rounded font-semibold"
               >
                 Share
               </Button>
