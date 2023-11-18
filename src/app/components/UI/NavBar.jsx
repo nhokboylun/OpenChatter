@@ -48,7 +48,7 @@ function NavBar() {
             className="w-6 h-6 hidden lg:block hover:text-blue-400 transform duration-300 text-gray-500 cursor-pointer"
           />
           {showModal && (
-            <div className="absolute transform top-0 mt-7 w-[200px] text-center py-2 dark:text-gray-700 bg-white rounded-xl shadow-xl">
+            <div className="absolute transform top-0 mt-7 w-[200px] text-center py-2 dark:text-gray-700 bg-white rounded-xl shadow-xl text-xl z-20">
               User ID: {userId}
             </div>
           )}

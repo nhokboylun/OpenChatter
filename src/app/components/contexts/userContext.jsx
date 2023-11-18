@@ -23,9 +23,9 @@ function UserProvider({ children }) {
       createUser(tempId);
       localStorage.setItem("OpenChatterId", tempId);
     } else {
-      generateUniqueId(); // Call the function recursively until a unique ID is found
+      generateUniqueId();
     }
-  }, []); // Dependencies array is empty which means this function is created once per component lifecycle
+  }, []);
 
   useEffect(() => {
     // This will only be executed on the client-side

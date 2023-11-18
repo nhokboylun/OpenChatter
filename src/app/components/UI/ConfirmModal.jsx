@@ -28,7 +28,9 @@ function ConfirmModal({ setShowConfirmModal, postId }) {
     try {
       setIsLoading(true);
       const { url } = await takeScreenshot(
-        `https://openchatter.netlify.app/${postId}`
+        `https://openchatter.netlify.app/${postId}`,
+        userId,
+        postId
       );
       const content = { ...data, postId, userId, url };
       await sharePost(content);

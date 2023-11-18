@@ -33,7 +33,7 @@ export async function fetchPostById(id) {
   };
 }
 
-async function uploadFile(file, userId) {
+export async function uploadFile(file, userId) {
   const filePath = `${userId}/${file.name}`;
 
   const { error } = await supabase.storage.from("image").upload(filePath, file);
@@ -46,13 +46,26 @@ async function uploadFile(file, userId) {
   return true;
 }
 
+// export async function removeFile(fileName, userId) {
+//   const filePath = `${userId}/${fileName}`;
+
+//   const { error } = await supabase.storage.from("image").remove([filePath]);
+
+//   if (error) {
+//     console.error("Error removing file:", error);
+//     return false;
+//   }
+
+//   return true;
+// }
+
 export async function createPost(data) {
   const { title, content, flags, imageUrl, secretKey, userId } = data;
 
   let isSuccess = true;
 
   if (data.imageFile) {
-    isSuccess = uploadFile(data.imageFile, userId);
+    isSuccess = await uploadFile(data.imageFile, userId);
   }
 
   const imageName = data.imageFile?.name || "";
