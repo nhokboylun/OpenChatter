@@ -277,3 +277,68 @@ export async function sharePost(data) {
 
   return null;
 }
+
+export async function getAllUsers() {
+  let { data, error } = await supabase.from("user").select("user_id");
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+export async function getMessageBetweenTwoIds(firstId, secondId) {
+  const { data, error } = await supabase
+    .from("message")
+    .select("*")
+    .or(
+      `and(sender_id.eq.${firstId},receiver_id.eq.${secondId}),and(sender_id.eq.${secondId},receiver_id.eq.${firstId})`
+    )
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+export function subscribeToConversation(
+  currentUser,
+  otherUser,
+  setNewMessages
+) {
+  const channelId =
+    currentUser < otherUser
+      ? `${currentUser}${otherUser}`
+      : `${otherUser}${currentUser}`;
+
+  const subscription = supabase
+    .channel(channelId)
+    .on(
+      "postgres_changes",
+      { event: "INSERT", schema: "public", table: "message" },
+      (payload) => {
+        setNewMessages((prevMessages) => [payload.new, ...prevMessages]);
+      }
+    )
+    .subscribe();
+
+  // Return a cleanup function
+  return () => subscription.unsubscribe();
+}
+
+export async function sendMessage(content, senderId, receiverId) {
+  const { data, error } = await supabase
+    .from("message")
+    .insert([
+      { content: content, sender_id: senderId, receiver_id: receiverId },
+    ]);
+
+  if (error) {
+    console.error("Error sending message:", error);
+    throw error;
+  }
+
+  return data;
+}
