@@ -36,6 +36,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [x] Light & Dark theme
+* [x] Chat app
 
 ## Video Walkthrough
 
@@ -44,10 +45,6 @@ Here's a walkthrough of implemented user stories:
 <img src='https://github.com/nhokboylun/OpenChatter/blob/main/OpenChatter_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with ScreenToGif(https://www.screentogif.com/) for Windows
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
