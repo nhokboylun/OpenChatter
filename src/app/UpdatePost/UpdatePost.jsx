@@ -37,7 +37,7 @@ function UpdatePost() {
 
   const [hasImageFile, setHasImageFile] = useState(false);
   const imageInputRef = useRef(null);
-  console.log(data);
+  // console.log(data);
 
   // if (typeof data === "undefined" || isError) {
   //   return <Error />;
