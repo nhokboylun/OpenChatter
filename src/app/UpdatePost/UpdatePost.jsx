@@ -37,16 +37,16 @@ function UpdatePost() {
 
   const [hasImageFile, setHasImageFile] = useState(false);
   const imageInputRef = useRef(null);
+  console.log(data);
 
-  if (typeof data === "undefined" || isError) {
-    return <Error />;
-  }
+  // if (typeof data === "undefined" || isError) {
+  //   return <Error />;
+  // }
 
   function handleImageUpload(event) {
     const file = event.target.files[0];
 
     if (file) {
-      console.log(file.type);
       const validImageTypes = [
         "image/gif",
         "image/jpeg",
